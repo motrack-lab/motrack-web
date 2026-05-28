@@ -16,7 +16,7 @@ const LandingPage = () => {
       <Hero />
       <About />
       <Features />
-      <Portfolio />
+      {/* <Portfolio /> */}
       <Pricing />
       <CopywritingPricing />
       <Addons />

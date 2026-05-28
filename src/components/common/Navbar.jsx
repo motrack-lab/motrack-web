@@ -35,7 +35,7 @@ export default function Navbar() {
     { name: "Beranda", id: "home" },
     { name: "Layanan", id: "features" },
     { name: "Tentang", id: "about" },
-    { name: "Portofolio", id: "portfolio" },
+    // { name: "Portofolio", id: "portfolio" },
     { name: "Paket Web", id: "pricing" },
     { name: "Copywriting", id: "copywriting" },
   ];
