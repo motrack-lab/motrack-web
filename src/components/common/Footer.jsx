@@ -1,92 +1,61 @@
 import React from "react";
-import { Rocket, Github, Twitter, Linkedin } from "lucide-react";
+import logo from "../../assets/images/logo.png";
+import { Github, Twitter, Linkedin } from "lucide-react";
+
+const FOOTER_LINKS = [
+  {
+    title: "Produk",
+    links: [
+      { label: "Fitur Utama", href: "#" },
+      { label: "Integrasi", href: "#" },
+      { label: "Harga", href: "#" },
+      { label: "Update", href: "#" },
+    ],
+  },
+];
 
 const Footer = () => {
   return (
-    <footer className="bg-primary-dark text-slate-400 py-16 px-4 relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-full h-[1px] bg-white/5" />
-      <div className="absolute bottom-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
-
-      <div className="max-w-6xl mx-auto grid md:grid-cols-4 gap-12 relative z-10">
-        <div className="col-span-2 text-left">
-          <div className="flex items-center gap-2.5 mb-6 text-white text-2xl font-black tracking-tight">
-            <Rocket className="text-primary" size={32} />
-            <span>MoTrack</span>
-          </div>
-          <p className="max-w-sm text-slate-400 mb-8 leading-relaxed font-medium">
+    <footer className="bg-brand-darkest text-white">
+      <div className="container-main px-4 py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="sm:col-span-2 lg:col-span-1">
+          <img src={logo} alt="MoTrack" className="h-7 mb-4 brightness-0 invert" />
+          <p className="text-brand-lighter text-sm leading-relaxed mb-6">
             Platform manajemen proyek masa depan. Membantu tim Anda bekerja
             lebih cepat dan lebih terukur dengan teknologi terbaik.
           </p>
           <div className="flex gap-4">
-            <a href="#" className="w-10 h-10 rounded-xl bg-white/5 hover:bg-primary/20 hover:text-white transition-all flex items-center justify-center text-slate-400 cursor-pointer">
-              <Twitter size={18} />
+            <a href="#" className="text-brand-light hover:text-white transition-colors cursor-pointer">
+              <Twitter size={20} />
             </a>
-            <a href="#" className="w-10 h-10 rounded-xl bg-white/5 hover:bg-primary/20 hover:text-white transition-all flex items-center justify-center text-slate-400 cursor-pointer">
-              <Linkedin size={18} />
+            <a href="#" className="text-brand-light hover:text-white transition-colors cursor-pointer">
+              <Linkedin size={20} />
             </a>
-            <a href="#" className="w-10 h-10 rounded-xl bg-white/5 hover:bg-primary/20 hover:text-white transition-all flex items-center justify-center text-slate-400 cursor-pointer">
-              <Github size={18} />
+            <a href="#" className="text-brand-light hover:text-white transition-colors cursor-pointer">
+              <Github size={20} />
             </a>
           </div>
         </div>
-
-        <div className="text-left">
-          <h4 className="text-white font-extrabold text-sm mb-6 uppercase tracking-wider">Produk</h4>
-          <ul className="space-y-4 text-xs font-semibold">
-            <li>
-              <a href="#" className="hover:text-white transition-colors">
-                Fitur Utama
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-white transition-colors">
-                Integrasi
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-white transition-colors">
-                Harga
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-white transition-colors">
-                Update
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        {/* <div className="text-left">
-          <h4 className="text-white font-extrabold text-sm mb-6 uppercase tracking-wider">Perusahaan</h4>
-          <ul className="space-y-4 text-xs font-semibold">
-            <li>
-              <a href="#" className="hover:text-white transition-colors">
-                Tentang Kami
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-white transition-colors">
-                Karir
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-white transition-colors">
-                Blog
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-white transition-colors">
-                Kontak
-              </a>
-            </li>
-          </ul>
-        </div> */}
+        
+        {FOOTER_LINKS.map((col) => (
+          <div key={col.title}>
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-brand-light mb-4">
+              {col.title}
+            </h4>
+            <ul className="flex flex-col gap-2 text-sm text-brand-lighter">
+              {col.links.map((l) => (
+                <li key={l.href}>
+                  <a href={l.href} className="hover:text-white transition-colors">
+                    {l.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </div>
-
-      <div className="max-w-6xl mx-auto border-t border-white/5 mt-16 pt-8 text-center text-xs font-medium text-slate-500">
-        <p>
-          &copy; 2026 MoTrack System. All rights reserved. Dibuat dengan cinta untuk efisiensi digital.
-        </p>
+      <div className="border-t border-brand-dark py-5 text-center text-xs text-brand-lightest">
+        © 2026 MoTrack System. All rights reserved.
       </div>
     </footer>
   );

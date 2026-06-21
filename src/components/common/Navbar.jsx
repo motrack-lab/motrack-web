@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { FiMenu, FiX } from "react-icons/fi";
 import logo from "../../assets/images/logo.png";
 
@@ -13,6 +14,20 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleNavClick = (id) => {
+    if (location.pathname !== "/") {
+      navigate("/");
+      setTimeout(() => {
+        scrollToSection(id);
+      }, 100);
+    } else {
+      scrollToSection(id);
+    }
+  };
 
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
@@ -35,71 +50,72 @@ export default function Navbar() {
     { name: "Beranda", id: "home" },
     { name: "Layanan", id: "features" },
     { name: "Tentang", id: "about" },
-    // { name: "Portofolio", id: "portfolio" },
     { name: "Paket Web", id: "pricing" },
     { name: "Copywriting", id: "copywriting" },
   ];
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full transition-all duration-500 z-50 ${
-        scrolled
-          ? "bg-white/70 backdrop-blur-xl border-b border-slate-100/80 shadow-[0_4px_30px_rgba(15,23,42,0.03)] py-3"
-          : "bg-transparent py-6"
+      className={`fixed top-0 w-full z-50 transition-colors duration-200 ${
+        scrolled ? "bg-white shadow-sm" : "bg-white/0"
       }`}
     >
-      <div className="flex items-center justify-between px-6 md:px-12 max-w-7xl mx-auto">
+      <div className="container-main flex items-center justify-between px-4 py-4">
         {/* Logo */}
         <div
-          className="flex items-center gap-2 cursor-pointer shrink-0 transition-transform active:scale-95"
-          onClick={() => scrollToSection("home")}
+          className="flex items-center gap-2 cursor-pointer shrink-0"
+          onClick={() => handleNavClick("home")}
         >
-          <img src={logo} alt="MoTrack Logo" className="h-8 md:h-9" />
+          <img src={logo} alt="MoTrack Logo" className="h-7" />
         </div>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center space-x-8">
+        <ul className="hidden md:flex items-center gap-8 text-sm font-medium text-neutral-700">
           {navLinks.map((link) => (
-            <button
-              key={link.id}
-              onClick={() => scrollToSection(link.id)}
-              className="text-slate-600 hover:text-primary transition-all duration-300 font-semibold text-[13px] tracking-wide relative group py-2 cursor-pointer"
-            >
-              {link.name}
-              <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-primary transition-all duration-300 group-hover:w-full" />
-            </button>
+            <li key={link.id}>
+              <button
+                onClick={() => handleNavClick(link.id)}
+                className="hover:text-brand transition-colors cursor-pointer"
+              >
+                {link.name}
+              </button>
+            </li>
           ))}
+        </ul>
+
+        {/* Desktop CTA */}
+        <div className="hidden md:flex items-center gap-3">
+          <button
+            onClick={() => handleNavClick("pricing")}
+            className="btn-primary text-sm px-4 py-2"
+          >
+            Lihat Paket
+          </button>
         </div>
 
         {/* Mobile Menu Icon */}
-        <div className="md:hidden">
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="text-slate-800 focus:outline-none p-1 bg-slate-50 rounded-xl"
-          >
-            {menuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
-          </button>
-        </div>
+        <button
+          onClick={() => setMenuOpen(!menuOpen)}
+          className="md:hidden p-2 text-brand-dark"
+        >
+          {menuOpen ? <FiX size={20} /> : <FiMenu size={20} />}
+        </button>
       </div>
 
       {/* Mobile Drawer */}
-      <div
-        className={`md:hidden absolute top-full left-0 w-full bg-white/95 backdrop-blur-2xl border-b border-slate-100 shadow-2xl transition-all duration-500 ease-in-out overflow-hidden ${
-          menuOpen ? "max-h-[500px] opacity-100 py-8" : "max-h-0 opacity-0"
-        }`}
-      >
-        <div className="flex flex-col space-y-4 px-8">
+      {menuOpen && (
+        <div className="md:hidden bg-white border-t border-neutral-200 px-4 py-4 flex flex-col gap-3 shadow-card">
           {navLinks.map((link) => (
             <button
               key={link.id}
-              onClick={() => scrollToSection(link.id)}
-              className="text-slate-600 hover:text-primary transition-colors text-left font-bold text-sm py-2 border-b border-slate-50 cursor-pointer"
+              onClick={() => handleNavClick(link.id)}
+              className="py-1.5 text-left text-neutral-700 font-medium cursor-pointer"
             >
               {link.name}
             </button>
           ))}
         </div>
-      </div>
+      )}
     </nav>
   );
 }

@@ -33,22 +33,22 @@ const About = () => {
   };
 
   return (
-    <section id="about" className="py-16 px-6 bg-[#FCFDFE]">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-16">
+    <section id="about" className="section bg-brand-lightest">
+      <div className="container-main flex flex-col md:flex-row items-center justify-between gap-16">
         <div className="flex-1 w-full flex justify-center items-center order-2 md:order-1">
           <img
             src={agencyIllustration}
             alt="MoTrack Agency Illustration"
-            className="w-full max-w-[450px] object-contain "
+            className="w-full max-w-md object-contain"
           />
         </div>
 
         <div className="flex-1 max-w-xl text-left order-1 md:order-2">
-          <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-4 tracking-tight">
-            Solusi <span className="text-black">Cerdas!</span>
+          <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 leading-tight mb-4">
+            Solusi <span className="text-brand-dark">Cerdas!</span>
           </h2>
 
-          <p className="text-gray-500 text-sm md:text-base leading-relaxed mb-10 font-medium">
+          <p className="text-sm md:text-base text-neutral-600 leading-relaxed mb-10">
             Kami memahami bahwa tidak ada dua bisnis yang sama. Oleh karena itu,
             kami meluangkan waktu untuk benar-benar mengerti kebutuhan unik
             Anda.
@@ -57,15 +57,15 @@ const About = () => {
           <div className="flex flex-col gap-6 mb-12">
             {steps.map((step, i) => (
               <div key={i} className="flex items-start gap-5">
-                <div className="w-8 h-8 rounded-full bg-[#1591DC] text-white flex items-center justify-center font-bold text-sm shrink-0 shadow-lg shadow-[#1591DC]/20 relative z-10">
+                <div className="w-8 h-8 rounded-full bg-brand text-white flex items-center justify-center font-semibold text-sm shrink-0">
                   {step.num}
                 </div>
 
-                <div className="pt-0.5">
-                  <h4 className="text-gray-900 font-extrabold text-sm mb-1">
+                <div className="pt-1">
+                  <h4 className="text-neutral-900 font-semibold text-sm mb-1">
                     {step.title}
                   </h4>
-                  <p className="text-gray-500 text-xs font-medium leading-relaxed max-w-[85%]">
+                  <p className="text-neutral-500 text-sm leading-relaxed max-w-xs">
                     {step.desc}
                   </p>
                 </div>
@@ -73,16 +73,16 @@ const About = () => {
             ))}
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
             <button
               onClick={() => scrollToSection("pricing")}
-              className="bg-[#1591DC] hover:bg-[#2C5EAD] text-white px-8 py-3.5 rounded-xl font-bold text-xs transition-all duration-300 shadow-lg shadow-[#1591DC]/20 cursor-pointer active:scale-95"
+              className="btn-primary"
             >
               Mulai Sekarang
             </button>
             <button
               onClick={() => scrollToSection("features")}
-              className="border-2 border-[#C4E2F5] text-[#2C5EAD] hover:bg-[#C4E2F5]/20 px-8 py-3.5 rounded-xl font-bold text-xs transition-all duration-300 cursor-pointer active:scale-95"
+              className="btn-secondary"
             >
               Pelajari Lebih Lanjut
             </button>

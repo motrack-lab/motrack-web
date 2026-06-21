@@ -40,48 +40,48 @@ const projects = [
 
 const PortfolioCard = ({ project }) => {
   return (
-    <div className="group bg-white rounded-3xl overflow-hidden border border-[#C4E2F5]/80 transition-all duration-300 flex flex-col">
-      <div className="relative h-60 overflow-hidden bg-slate-50 shrink-0">
+    <div className="card group p-0 flex flex-col overflow-hidden">
+      <div className="relative h-60 overflow-hidden bg-brand-lightest shrink-0">
         {project.image ? (
           <img
             src={project.image}
             alt={project.title}
-            className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500 ease-out"
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200 ease-out"
           />
         ) : (
-          <div className="w-full h-full bg-[#C4E2F5]/30 flex flex-col items-center justify-center gap-3">
-            <div className="w-12 h-12 rounded-2xl bg-white flex items-center justify-center shadow-sm border border-[#C4E2F5]/40 text-[#2C5EAD]">
+          <div className="w-full h-full bg-brand-lightest flex flex-col items-center justify-center gap-3">
+            <div className="w-12 h-12 rounded-2xl bg-white flex items-center justify-center shadow-sm border border-brand-lighter text-brand-dark">
               <Sparkles size={20} />
             </div>
-            <span className="text-slate-400 text-xs font-bold">Dokumen Proyek Terkait</span>
+            <span className="text-neutral-400 text-xs font-semibold">Dokumen Proyek Terkait</span>
           </div>
         )}
 
         {/* Category Badge */}
-        <span className="absolute top-4 left-4 bg-white/95 backdrop-blur-md text-[#2C5EAD] text-[10px] font-extrabold px-3.5 py-1.5 rounded-full shadow-sm tracking-wider uppercase border border-[#C4E2F5]/60">
+        <span className="absolute top-4 left-4 bg-white/95 backdrop-blur-md text-brand-dark text-xs font-semibold px-3 py-1.5 rounded-full shadow-sm border border-brand-lighter">
           {project.category}
         </span>
       </div>
 
       {/* Teks Konten */}
-      <div className="p-8 flex flex-col flex-1 text-left justify-between">
+      <div className="p-6 flex flex-col flex-1 text-left justify-between">
         <div>
-          <h3 className="text-xl font-extrabold text-slate-900 mb-3 group-hover:text-[#2C5EAD] transition-colors duration-300 tracking-tight leading-snug">
+          <h3 className="text-lg font-semibold text-neutral-900 mb-2 group-hover:text-brand transition-colors duration-200">
             {project.title}
           </h3>
-          <p className="text-slate-500 text-sm leading-relaxed mb-6 font-medium">
+          <p className="text-neutral-500 text-sm leading-relaxed mb-6">
             {project.desc}
           </p>
         </div>
 
         {/* Links */}
-        <div className="border-t border-slate-50 pt-5 flex items-center gap-6 mt-auto">
+        <div className="border-t border-neutral-100 pt-5 flex items-center gap-4 mt-auto">
           {project.demoUrl && project.demoUrl !== "#" ? (
             <a
               href={project.demoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-slate-600 font-extrabold text-xs hover:text-[#2C5EAD] transition-colors duration-200"
+              className="flex items-center gap-1.5 text-neutral-600 font-semibold text-xs hover:text-brand-dark transition-colors duration-200"
             >
               <ExternalLink size={14} />
               <span>Live Preview</span>
@@ -93,7 +93,7 @@ const PortfolioCard = ({ project }) => {
               href={project.repoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-slate-600 font-extrabold text-xs hover:text-[#2C5EAD] transition-colors duration-200"
+              className="flex items-center gap-1.5 text-neutral-600 font-semibold text-xs hover:text-brand-dark transition-colors duration-200"
             >
               <Github size={14} />
               <span>Repositori</span>
@@ -101,7 +101,7 @@ const PortfolioCard = ({ project }) => {
           ) : null}
 
           {!project.demoUrl && !project.repoUrl && (
-            <span className="text-slate-400 text-xs font-medium">
+            <span className="text-neutral-400 text-xs font-medium">
               Konsultasi via WhatsApp
             </span>
           )}
@@ -121,20 +121,19 @@ const Portfolio = () => {
       : projects.filter((p) => p.category === filter);
 
   return (
-    <section id="portfolio" className="py-16 px-6 bg-slate-50/20 border-t border-[#C4E2F5]/30">
-      <div className="max-w-6xl mx-auto">
-        
+    <section id="portfolio" className="section bg-white">
+      <div className="container-main">
         {/* Header */}
-        <div className="text-center mb-14">
-          <span className="inline-block bg-[#C4E2F5]/30 text-[#2C5EAD] font-bold px-4 py-1.5 rounded-full text-xs uppercase tracking-wider mb-4">
-            Portofolio Kami
-          </span>
+        <div className="mb-12">
+          <div className="flex justify-center">
+            <span className="badge mb-4">Portofolio Kami</span>
+          </div>
           
-          <h2 className="text-4xl md:text-5xl font-black text-black mb-6 tracking-tight leading-tight">
+          <h2 className="section-heading">
             Karya Terbaik yang Telah Kami Selesaikan
           </h2>
           
-          <p className="text-slate-500 text-lg max-w-xl mx-auto font-medium">
+          <p className="section-subheading">
             Bukti nyata komitmen kami membantu merealisasikan ide digital dengan kualitas visual dan fungsional kelas dunia.
           </p>
         </div>
@@ -145,10 +144,10 @@ const Portfolio = () => {
             <button
               key={cat}
               onClick={() => setFilter(cat)}
-              className={`px-6 py-2.5 rounded-full text-xs font-bold transition-all duration-300 cursor-pointer ${
+              className={`px-6 py-2.5 rounded-full text-xs font-semibold transition-colors duration-200 cursor-pointer border ${
                 filter === cat
-                  ? "bg-[#2C5EAD] text-white shadow-sm shadow-[#2C5EAD]/20"
-                  : "bg-white text-slate-600 hover:bg-slate-100 hover:text-slate-900 border border-slate-100"
+                  ? "bg-brand text-white border-brand"
+                  : "bg-white text-neutral-600 hover:bg-neutral-50 hover:text-neutral-900 border-neutral-200"
               }`}
             >
               {cat}
@@ -157,24 +156,11 @@ const Portfolio = () => {
         </div>
 
         {/* Cards Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredProjects.map((project, i) => (
             <PortfolioCard key={i} project={project} />
           ))}
         </div>
-
-        {/* CTA */}
-        {/* <div className="text-center mt-16">
-          <a
-            href="https://wa.me/6281249175576"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-[#2C5EAD] text-white font-bold px-8 py-4.5 rounded-full text-sm cursor-pointer shadow-md shadow-[#2C5EAD]/10"
-          >
-            <ExternalLink size={16} />
-            Eksplor Lebih Banyak Proyek & Konsultasi Gratis
-          </a>
-        </div> */}
       </div>
     </section>
   );
