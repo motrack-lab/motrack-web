@@ -9,7 +9,7 @@ const services = [
   },
   {
     icon: Globe,
-    title: "UI/UX & Web Design",
+    title: "Web Design",
     desc: "Desain antarmuka website modern dan portofolio personal interaktif untuk meningkatkan konversi audiens Anda.",
   },
   {

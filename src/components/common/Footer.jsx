@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from "../../assets/images/logo.png";
+import logo from "../../assets/images/Primary Logo.png";
 import { Github, Twitter, Linkedin, Instagram } from "lucide-react";
 
 const FOOTER_LINKS = [
@@ -42,14 +42,8 @@ const Footer = () => {
             Mitra digital terpercaya untuk membangun kehadiran online bisnis Anda. Dari profil elegan hingga sistem kompleks, kami wujudkan visi Anda menjadi realitas digital.
           </p>
           <div className="flex gap-4">
-            <a href="#" className="w-10 h-10 rounded-full bg-brand-dark/50 flex items-center justify-center text-brand-light hover:bg-brand hover:text-white transition-all duration-300">
+            <a href="https://www.instagram.com/motrack.id?utm_source=qr" className="w-10 h-10 rounded-full bg-brand-dark/50 flex items-center justify-center text-brand-light hover:bg-brand hover:text-white transition-all duration-300">
               <Instagram size={18} />
-            </a>
-            <a href="#" className="w-10 h-10 rounded-full bg-brand-dark/50 flex items-center justify-center text-brand-light hover:bg-brand hover:text-white transition-all duration-300">
-              <Twitter size={18} />
-            </a>
-            <a href="#" className="w-10 h-10 rounded-full bg-brand-dark/50 flex items-center justify-center text-brand-light hover:bg-brand hover:text-white transition-all duration-300">
-              <Linkedin size={18} />
             </a>
           </div>
         </div>

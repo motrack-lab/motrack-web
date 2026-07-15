@@ -4,7 +4,7 @@ import { Check } from "lucide-react";
 const packages = [
   {
     name: "PAKET SMART 🖥️",
-    price: "1.800.000",
+    price: "1.500.000",
     badge: "DIGITAL MENU & PROFILE",
     description:
       "Halaman profil utama untuk mengenalkan identitas kafe, jam operasional, dan fasilitas ke calon pelanggan.",
@@ -20,7 +20,7 @@ const packages = [
   },
   {
     name: "PAKET PRO 🚀",
-    price: "3.800.000",
+    price: "2.800.000",
     badge: "Best Seller",
     description:
       "Website canggih dengan fitur reservasi meja, smart input pesanan, dan manajemen dashboard untuk operasional kafe.",
@@ -37,7 +37,7 @@ const packages = [
   },
   {
     name: "PAKET PREMIUM ⚡",
-    price: "6.500.000",
+    price: "3.500.000",
     badge: "LOYALTY & WAITLIST",
     description:
       "Sistem pemesanan QR Code dan manajemen resource komprehensif, untuk efisiensi maksimal bisnis F&B Anda.",

@@ -22,7 +22,7 @@ const packages = [
   },
   {
     name: "Company Profile",
-    price: "1.800.000",
+    price: "1.500.000",
     badge: "Pilihan UMKM",
     description:
       "Tingkatkan kredibilitas bisnis Anda dengan website profil perusahaan yang lengkap dan informatif.",

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { FiMenu, FiX } from "react-icons/fi";
-import logo from "../../assets/images/logo.png";
+import logo from "../../assets/images/Primary Logo.png";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
