@@ -20,6 +20,7 @@ const InvoiceGenerator = () => {
 
   // State: Invoice Details
   const [customer, setCustomer] = useState("Customer");
+  const [invoiceCategory, setInvoiceCategory] = useState("CPY");
   const [invoiceDate, setInvoiceDate] = useState(new Date().toISOString().split("T")[0]);
   const [invoiceCounter, setInvoiceCounter] = useState(1);
 
@@ -80,7 +81,7 @@ const InvoiceGenerator = () => {
   const generateInvoiceNumber = () => {
     const datePart = invoiceDate.replace(/-/g, "");
     const counterPart = invoiceCounter.toString().padStart(3, "0");
-    return `INV-CPY-${datePart}-${counterPart}`;
+    return `INV-${invoiceCategory}-${datePart}-${counterPart}`;
   };
 
   const grandTotal = items.reduce((acc, item) => acc + item.price * item.qty, 0);
@@ -139,14 +140,28 @@ const InvoiceGenerator = () => {
           <section>
             <h3 className="text-sm font-bold text-neutral-400 uppercase tracking-wider mb-4 border-b border-neutral-100 pb-2">Info Utama</h3>
             <div className="space-y-4">
-              <div>
-                <label className="block text-xs font-semibold text-neutral-600 mb-1">Nama Customer</label>
-                <input
-                  type="text"
-                  value={customer}
-                  onChange={(e) => setCustomer(e.target.value)}
-                  className="w-full border border-neutral-200 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-brand focus:border-brand outline-none transition-all"
-                />
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-semibold text-neutral-600 mb-1">Nama Customer</label>
+                  <input
+                    type="text"
+                    value={customer}
+                    onChange={(e) => setCustomer(e.target.value)}
+                    className="w-full border border-neutral-200 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-brand focus:border-brand outline-none transition-all"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-neutral-600 mb-1">Kategori Layanan</label>
+                  <select
+                    value={invoiceCategory}
+                    onChange={(e) => setInvoiceCategory(e.target.value)}
+                    className="w-full border border-neutral-200 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-brand focus:border-brand outline-none transition-all bg-white"
+                  >
+                    <option value="CPY">Copywriting (CPY)</option>
+                    <option value="WEB">Web Development (WEB)</option>
+                    <option value="DSN">Desain Grafis (DSN)</option>
+                  </select>
+                </div>
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
