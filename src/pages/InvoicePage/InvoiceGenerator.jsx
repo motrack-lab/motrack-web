@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { toPng } from "html-to-image";
+import { toJpeg } from "html-to-image";
 import jsPDF from "jspdf";
 import { Plus, Trash2, Download, Home } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -92,7 +92,8 @@ const InvoiceGenerator = () => {
     setIsGenerating(true);
 
     try {
-      const dataUrl = await toPng(invoiceRef.current, {
+      const dataUrl = await toJpeg(invoiceRef.current, {
+        quality: 0.85,
         cacheBust: true,
         pixelRatio: 2, // High resolution equivalent to html2canvas scale: 2
       });
@@ -101,7 +102,7 @@ const InvoiceGenerator = () => {
       const pdfWidth = pdf.internal.pageSize.getWidth();
       const pdfHeight = (invoiceRef.current.offsetHeight * pdfWidth) / invoiceRef.current.offsetWidth;
 
-      pdf.addImage(dataUrl, "PNG", 0, 0, pdfWidth, pdfHeight);
+      pdf.addImage(dataUrl, "JPEG", 0, 0, pdfWidth, pdfHeight);
       pdf.save(`${generateInvoiceNumber()}.pdf`);
     } catch (error) {
       console.error("Error generating PDF:", error);
